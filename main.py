@@ -165,8 +165,8 @@ with col1:
                color=group_colors[tech], label=f"{tech} (gesamt)")
         bottom += cap_vals
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(HOURS)
+    #ax.set_xticks(x)
+    #ax.set_xticklabels(HOURS)
     ax.set_xlabel("Stunden")
     ax.set_ylabel("MWh")
     ax.set_title(f"Nachfrage (links) und Erzeugungskapazität (rechts, ohne Gas) — {day_type}")
@@ -309,3 +309,4 @@ if st.button("Neuer Tag starten"):
     st.session_state.storage_level = 250.0
     st.session_state.hour_index = 0
     st.info("Neuer Tag gestartet — Speicher und Gewinne zurückgesetzt.")
+
