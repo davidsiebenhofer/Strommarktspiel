@@ -8,20 +8,22 @@ import matplotlib.pyplot as plt
 HOURS = [6, 9, 12, 15, 18, 21]
 
 PRODUCERS = [
-    "Wind 1", "Wind 2", "Wind 3",
-    "PV 1", "PV 2",
-    "Wasser 1", "Wasser 2",
+    "Wind 1", #"Wind 2", "Wind 3",
+    "PV 1", #"PV 2",
+    "Wasser 1", #"Wasser 2",
     "Pumpspeicher 1",
     "Gas 1", "Gas 2",
     "Nuklear 1"
     ]
 
+factor = 2.5
+
 #---------------------- Nachfrageprofile ----------------------
 
 demand_profiles = {
-    "Normaler Tag": {6: 1000, 9: 1300, 12: 1300, 15: 1100, 18: 1800, 21: 1000},
+    "Normaler Tag": {6: 600, 9: 900, 12: 800, 15: 700, 18: 1200, 21: 700},
     "Wintertag": {6: 1500, 9: 2000, 12: 2500, 15: 2700, 18: 3500, 21: 2500},
-    "Sommertag": {6: 1000, 9: 1200, 12: 1800, 15: 1200, 18: 2000, 21: 1300},
+    "Sommertag": {6: 500, 9: 700, 12: 700, 15: 500, 18: 1000, 21: 700},
     }
 
 #---------------------- Kapazitäten ----------------------
@@ -38,7 +40,7 @@ capacity_profiles = {
         "Pumpspeicher 1": [200, 200, 200, 200, 200, 200],
         "Gas 1": [999999] * 6,
         "Gas 2": [999999] * 6,
-        "Nuklear 1": [100] * 6,
+        "Nuklear 1": [100] * 6 ,
     },
     "Wintertag": {
         "Wind 1": [180, 140, 100, 200, 80, 120],
@@ -196,7 +198,7 @@ def limit_pumpspeicher(qty, storage_level, max_storage):
 
 bids = []
 for p in PRODUCERS:
-    maxcap = caps_default[p][st.session_state.hour_index]
+    maxcap = caps_default[p][st.session_state.hour_index]*factor
     cost = cost_default[p]
     col_a, col_b, col_c = st.columns([3, 2, 2])
     with col_a:
