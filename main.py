@@ -1,7 +1,11 @@
+import matplotlib
+matplotlib.use("Agg")
+
 import streamlit as st
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
+
 
 # ---------------------- Standarddaten ----------------------------------
 
@@ -309,4 +313,5 @@ if st.button("Neuer Tag starten"):
     st.session_state.storage_level = 250.0
     st.session_state.hour_index = 0
     st.info("Neuer Tag gestartet — Speicher und Gewinne zurückgesetzt.")
+
 
