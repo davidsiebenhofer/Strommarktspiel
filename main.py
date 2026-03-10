@@ -175,7 +175,7 @@ with col1:
     ax.set_ylabel("MWh")
     ax.set_title(f"Nachfrage (links) und Erzeugungskapazität (rechts, ohne Gas) — {day_type}")
     ax.legend(bbox_to_anchor=(1.02, 1), loc="upper left")
-    st.pyplot(fig)
+    st.pyplot(fig, clear_figure=True)
 
 
 
@@ -296,7 +296,7 @@ if st.button("Los! Merit Order berechnen"):
         ax.set_xlabel('Erzeugte und nachgefragte Energie / MWh')
         ax.set_ylabel('Preis / €/MWh')
         ax.legend(loc='upper left', bbox_to_anchor=(1, 1))
-        st.pyplot(fig)
+        st.pyplot(fig, clear_figure=True)
 
         st.success(f"Clearingpreis: {clearing_price:.2f} €/MWh")
         st.dataframe(result.style.format(
@@ -313,5 +313,6 @@ if st.button("Neuer Tag starten"):
     st.session_state.storage_level = 250.0
     st.session_state.hour_index = 0
     st.info("Neuer Tag gestartet — Speicher und Gewinne zurückgesetzt.")
+
 
 
